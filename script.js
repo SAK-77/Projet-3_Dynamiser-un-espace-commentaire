@@ -1,6 +1,6 @@
   //Important Data
-  const commentList = document.getElementById ("comment-list");
-  const errorMessage = document.getElementById("errorMessage");
+  let commentList = document.getElementById ("comment-list");
+  let errorMessage = document.getElementById("errorMessage");
 
   //let button = document.querySelector("button");
 
@@ -16,9 +16,9 @@
     event.preventDefault();
 
     const myForm = document.getElementById("myForm");
-    const firstName = myForm.element['first-name'];
-    const lastName = myForm.element['last-name'];
-    const message = myForm.element['message'];
+    let firstName = myForm.element['first-name'];
+    let lastName = myForm.element['last-name'];
+    let message = myForm.element['message'];
     
     if (firstName.value !== "" && lastName.value !== "" && message.value !== "") {
       let flex = document.createElement("div");

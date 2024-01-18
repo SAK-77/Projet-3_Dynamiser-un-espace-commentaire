@@ -1,18 +1,26 @@
   //Important Data
-  const myForm = document.getElementById("myForm");
   const commentList = document.getElementById ("comment-list");
   const errorMessage = document.getElementById("errorMessage");
-  const firstName = document.getElementById("first-name");
-  const lastName = document.getElementById("last-name");
-  const comment = document.getElementById("message");
+
   //let button = document.querySelector("button");
 
+  //Reset Form
+  function resetForm(){
+    firstName.value = "";
+    lastName.value = "";
+    comment.value = "";
+  }
 
   //Fonction to add the comment on the screen
   function addComment(event, commentList) {
     event.preventDefault();
+
+    const myForm = document.getElementById("myForm");
+    const firstName = myForm.element['first-name'];
+    const lastName = myForm.element['last-name'];
+    const message = myForm.element['message'];
     
-    if (firstName.value !== "" && lastName.value !== "" && comment.value !== "") {
+    if (firstName.value !== "" && lastName.value !== "" && message.value !== "") {
       let flex = document.createElement("div");
       flex.classList.add("flex", "space-x-4", "text-sm", "text-gray-500");
   
@@ -27,7 +35,7 @@
       //recuperer le contenu du formulaire nom + prenom et comme contenu du h3
       let fullName = document.createElement("h3");
       //fullName.setAttribute = ("id", "newCommentName");
-      fullName.innerHTML = firstName.value + " " + lastName.value;
+      fullName.innerText = firstName.value + " " + lastName.value;
       flex2.appenChild(fullName);
   
       let flex3 = document.createElement("div");
@@ -35,12 +43,12 @@
       flex2.appendChild(flex3);
   
       let prose = document.createElement("p");
-      prose.innerText = comment.value;
+      prose.innerText = message.value;
       flex3.appendChild(prose);
   
       commentList.appendChild(flex);
   
-      myForm.reset();
+      resetForm();
     }
     else {
       errorMessage.style.display = "block";

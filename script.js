@@ -16,9 +16,10 @@
     event.preventDefault();
 
     const myForm = document.getElementById("myForm");
-    let firstName = myForm.element['first-name'];
-    let lastName = myForm.element['last-name'];
-    let message = myForm.element['message'];
+    //let firstName = myForm.element['first-name'];
+    //let lastName = myForm.element['last-name'];
+    //let message = myForm.element['message'];
+    let formData = new FormData(myForm);
     
     if (firstName.value !== "" && lastName.value !== "" && message.value !== "") {
       let flex = document.createElement("div");
@@ -34,8 +35,7 @@
   
       //recuperer le contenu du formulaire nom + prenom et comme contenu du h3
       let fullName = document.createElement("h3");
-      //fullName.setAttribute = ("id", "newCommentName");
-      fullName.innerText = firstName.value + " " + lastName.value;
+      fullName.textContent = formData.get('first-name') + " " + formData.get('last-name');
       flex2.appenChild(fullName);
   
       let flex3 = document.createElement("div");
@@ -43,12 +43,12 @@
       flex2.appendChild(flex3);
   
       let prose = document.createElement("p");
-      prose.innerText = message.value;
+      prose.textContent = formData.get('message');
       flex3.appendChild(prose);
   
       commentList.appendChild(flex);
   
-      resetForm();
+      formData.reset();
     }
     else {
       errorMessage.style.display = "block";

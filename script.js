@@ -8,6 +8,7 @@
 
   //Fonction to add the comment on the screen
   function addComment(event, commentList) {
+    
     event.preventDefault();
     
     if (firstName.value !== "" && lastName.value !== "" && message.value !== "") {
